@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'About' /}
+
+#{welcomemenu id:"start"/}
+
+<section class="ui center aligned middle aligned segment">
+  <h1 class="ui header">
+    Welcome to Weather Top
+  </h1>
+  <h2 class="ui right floated">
+    Let's get started
+    <br>
+    <br>
+    Not a member? Select Signup in the top right to get started
+  </h2>
+</section>
+<img class="ui left floated medium image" src="/public/images/cloud.png">
+<div class="ui column middle aligned grid basic segment">
+  <div class="column">
+    <form class="ui stacked segment form" action="/authenticate" method="POST">
+      <h3 class="ui header">Log-in</h3>
+      <div class="field">
+        <label>Email</label> <input placeholder="Email" name="email">
+      </div>
+      <div class="field">
+        <label>Password</label> <input type="password" name="password">
+      </div>
+      <button class="ui blue submit button">Login</button>
+    </form>
+  </div>
+</div>

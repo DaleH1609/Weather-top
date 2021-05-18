@@ -1,0 +1,81 @@
+#{list items:_station, as:'station'}
+<div class="ui inverted five stackable cards">
+    <div class="card">
+        <div class="content">
+            <div class="header">${station.name}<i class="big purple right floated binoculars icon"></i> </div>
+            <div class="meta">
+                Latitude:
+                <br>
+                ${station.latitude}
+                <br>
+                Longitude:
+                <br>
+                ${station.longitude}
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <div class="header">Weather<i class="big red right floated umbrella icon"></i></div>
+            <div class="meta">
+                <br>
+                ${station.weatherLatest()}
+                <br>
+                <br>
+                <i class="huge yellow ${station.weatherIcon()}"></i>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <div class="header">Temp <i class="big blue right floated temperature high icon"></i></div>
+            <div class="meta">
+                ${station.celsiusLatest()} C
+                <br>
+                ${station.celsiusToFarenheit()} F
+                <br>
+               Max: ${station.getMaxTemp()}
+                <br>
+               Min ${station.getMinTemp()}
+                <br>
+               Trend: <i class="big blue ${station.tempTrend()}"></i>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <div class="header">Wind<i class="big green right floated wind icon"></i></div>
+            <div class="meta">
+                ${station.windSpeedLatest()} bft
+                <br>
+                ${station.windCompass()}
+                <br>
+                Feels like
+                <br>
+                ${station.chillLatest()}
+                <br>
+               Max: ${station.getMaxWindSpeed()}
+                <br>
+               Min: ${station.getMinWindSpeed()}
+                <br>
+               Trend: <i class="big green ${station.windTrend()}"></i>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="content">
+            <div class="header">Pressure <i class="big orange right floated compress icon"></i></div>
+            <div class="meta">
+                ${station.pressureLatest()} hpa
+                <br>
+                Max: ${station.getMaxPressure()}
+                <br>
+                Min: ${station.getMinPressure()}
+                <br>
+               Trend: <i class="big orange ${station.pressureTrend()}"></i>
+            </div>
+          </div>
+        </div>
+    </div>
+#{/list}

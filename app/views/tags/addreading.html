@@ -1,0 +1,25 @@
+<form class="ui big form" action="/stations/${_station.id}/addreading" method="POST">
+    <div class="five fields">
+        <div class="field">
+            <label>Code</label>
+            <input placeholder="0" type="int" name="code">
+        </div>
+        <div class="field">
+            <label>Temperature</label>
+            <input placeholder="00.00c" type="double" name="temperature">
+        </div>
+        <div class="field">
+            <label>Wind speed</label>
+            <input placeholder="00.00kMh" type="double" name="windSpeed">
+        </div>
+        <div class="field">
+            <label>Wind direction</label>
+            <input placeholder="000deg" type="double" name="windDirection">
+        </div>
+        <div class="field">
+            <label>Pressure</label>
+            <input placeholder="000hPa" type="int" name="pressure">
+        </div>
+    </div>
+    <button class="ui blue submit button">Submit report</button>
+</form>

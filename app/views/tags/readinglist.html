@@ -1,0 +1,36 @@
+<table class="ui inverted fixed table">
+    <thead>
+    <tr>
+        <th>Date/Time</th>
+        <th>Code</th>
+        <th>Temp</th>
+        <th>Wind Speed</th>
+        <th>Pressure</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{list items:_station.readings, as:'reading'}
+    <tr>
+        <td>
+            ${reading.getDate()}
+        </td>
+        <td>
+            ${reading.code}
+        </td>
+        <td>
+            ${reading.temperature}
+        </td>
+        <td>
+            ${reading.windSpeed}
+        </td>
+        <td>
+            ${reading.pressure}
+        </td>
+        <td>
+            <a href="/stations/${_station.id}/deletestation/${reading.id}" class="ui icon button"</a>
+            <i class="icon trash"></i>
+        </td>
+    </tr>
+    #{/list}
+    </tbody>
+</table>
