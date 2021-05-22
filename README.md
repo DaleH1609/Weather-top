@@ -1,5 +1,3 @@
-# play-template-1
+#Weather Top
 
-This is a sample starter project for this course:
-
-- [Web Development](https://tutors-design.netlify.com/course/wit-hdip-comp-sci-2020-web-development.netlify.com)
+This is my final project for semester one.
