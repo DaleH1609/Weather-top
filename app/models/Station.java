@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -16,7 +17,6 @@ public class Station extends Model {
     public double longitude;
     @OneToMany(cascade = CascadeType.ALL)
     public List<Reading> readings = new ArrayList<>();
-
 
     public Station(String name, double latitude, double longitude) {
         this.name = name;
@@ -47,73 +47,60 @@ public class Station extends Model {
     }
 
     public String weatherLatest() {
-        String weatherCode = "";
         if (!readings.isEmpty()) {
-            if (readings.get(readings.size() - 1).code == 100) {
-                weatherCode = weatherCode + "Clear";
-            } else if (readings.get(readings.size() - 1).code == 200) {
-                weatherCode = weatherCode + "Partial clouds";
-            } else if (readings.get(readings.size() - 1).code == 300) {
-                weatherCode = weatherCode + "Cloudy";
-            } else if (readings.get(readings.size() - 1).code == 400) {
-                weatherCode = weatherCode + "Light Showers";
-            } else if (readings.get(readings.size() - 1).code == 500) {
-                weatherCode = weatherCode + "Heavy Showers";
-            } else if (readings.get(readings.size() - 1).code == 600) {
-                weatherCode = weatherCode + "Rain";
-            } else if (readings.get(readings.size() - 1).code == 700) {
-                weatherCode = weatherCode + "Snow";
-            } else if (readings.get(readings.size() - 1).code == 800) {
-                weatherCode = weatherCode + "Thunder";
-            }
+            int weatherCode = readings.get(readings.size() - 1).code;
+            HashMap<Integer, String> weatherIcons = new HashMap<Integer, String>();
+            weatherIcons.put(100, "Clear");
+            weatherIcons.put(200, "Partial Clouds");
+            weatherIcons.put(300, "Cloudy");
+            weatherIcons.put(400, "Light Showers");
+            weatherIcons.put(500, "Heavy Showers");
+            weatherIcons.put(600, "Rain");
+            weatherIcons.put(700, "Snow");
+            weatherIcons.put(800, "Thunder");
+            return weatherIcons.get(weatherCode);
         }
-        return weatherCode;
+        return "No data entered";
     }
 
 
-    public String weatherIcon() {
-        if (!readings.isEmpty()) {
-            if (readings.get(readings.size() - 1).code == 100) {
-                return "sun icon";
-            } else if (readings.get(readings.size() - 1).code == 200) {
-                return "cloud sun icon";
-            } else if (readings.get(readings.size() - 1).code == 300) {
-                return "cloud icon";
-            } else if (readings.get(readings.size() - 1).code == 400) {
-                return "cloud sun rain icon";
-            } else if (readings.get(readings.size() - 1).code == 500) {
-                return "cloud showers heavy icon";
-            } else if (readings.get(readings.size() - 1).code == 600) {
-                return "cloud rain icon";
-            } else if (readings.get(readings.size() - 1).code == 700) {
-                return "snowflake icon";
-            } else if (readings.get(readings.size() - 1).code == 800) {
-                return "bolt icon";
-            }
+    public String weatherIcon(){
+        if(!readings.isEmpty()) {
+            int weatherCode = readings.get(readings.size() - 1).code;
+            HashMap<Integer, String> weatherIcons = new HashMap<Integer, String>();
+            weatherIcons.put(100, "sun icon");
+            weatherIcons.put(200, "cloud sun icon");
+            weatherIcons.put(300, "cloud icon");
+            weatherIcons.put(400, "cloud sun rain icon");
+            weatherIcons.put(500, "cloud showers heavy icon");
+            weatherIcons.put(600, "cloud rain icon");
+            weatherIcons.put(700, "snowflake icon");
+            weatherIcons.put(800, "poo storm icon");
+            return weatherIcons.get(weatherCode);
         }
-        return null;
+        return "No data entered";
     }
 
     public String tempTrend() {
-        if (readings.size() > 3) {
+        if (readings.size() >= 3) {
             double Trend1 = (readings.get(readings.size() - 1).temperature);
             double Trend2 = (readings.get(readings.size() - 2).temperature);
             double Trend3 = (readings.get(readings.size() - 3).temperature);
-
             if (Trend1 > Trend2 && Trend2 > Trend3) {
                 return "arrow up icon";
             } else if (Trend1 < Trend2 && Trend2 < Trend3) {
                 return "arrow down icon";
-            } else {
-                return "arrows alternate horizontal";
+            } else{
+                return "arrows alternate horizontal icon";
             }
         }
-        return null;
+        return "arrows alternate horizontal icon";
     }
 
 
+
     public String pressureTrend() {
-        if (readings.size() > 3) {
+        if (readings.size() >= 3) {
             double Trend1 = (readings.get(readings.size() - 1).pressure);
             double Trend2 = (readings.get(readings.size() - 2).pressure);
             double Trend3 = (readings.get(readings.size() - 3).pressure);
@@ -123,15 +110,14 @@ public class Station extends Model {
             } else if (Trend1 < Trend2 && Trend2 < Trend3) {
                 return "arrow down icon";
             } else{
-                return "arrows alternate horizontal";
+                return "arrows alternate horizontal icon";
             }
         }
-        return null;
+        return "arrows alternate horizontal icon";
     }
 
-
     public String windTrend() {
-        if (readings.size() > 3) {
+        if (readings.size() >= 3) {
             double Trend1 = (readings.get(readings.size() - 1).windSpeed);
             double Trend2 = (readings.get(readings.size() - 2).windSpeed);
             double Trend3 = (readings.get(readings.size() - 3).windSpeed);
@@ -141,12 +127,11 @@ public class Station extends Model {
             } else if (Trend1 < Trend2 && Trend2 < Trend3) {
                 return "arrow down icon";
             } else{
-                return "arrows alternate horizontal";
+                return "arrows alternate horizontal icon";
             }
         }
-        return null;
+        return "arrows alternate horizontal icon";
     }
-
 
     public double chillLatest() {
         if(!readings.isEmpty()) {
@@ -197,7 +182,6 @@ public class Station extends Model {
         }
         return weatherCompass;
     }
-
 
     public int windSpeedLatest() {
         if (!readings.isEmpty()) {

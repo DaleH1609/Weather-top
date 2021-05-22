@@ -4,8 +4,7 @@ import play.db.jpa.Model;
 
 import javax.persistence.Entity;
 import java.util.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
+
 
 @Entity
 public class Reading extends Model {
