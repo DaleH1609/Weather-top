@@ -52,17 +52,17 @@ public class Station extends Model {
 
     public String weatherLatest() {
         if (!readings.isEmpty()) {
-            int weatherCode = readings.get(readings.size() - 1).code;
-            HashMap<Integer, String> weatherIcons = new HashMap<Integer, String>();
-            weatherIcons.put(100, "Clear");
-            weatherIcons.put(200, "Partial Clouds");
-            weatherIcons.put(300, "Cloudy");
-            weatherIcons.put(400, "Light Showers");
-            weatherIcons.put(500, "Heavy Showers");
-            weatherIcons.put(600, "Rain");
-            weatherIcons.put(700, "Snow");
-            weatherIcons.put(800, "Thunder");
-            return weatherIcons.get(weatherCode);
+            int weatherName = readings.get(readings.size() - 1).code;
+            HashMap<Integer, String> weatherNames = new HashMap<Integer, String>();
+            weatherNames.put(100, "Clear");
+            weatherNames.put(200, "Partial Clouds");
+            weatherNames.put(300, "Cloudy");
+            weatherNames.put(400, "Light Showers");
+            weatherNames.put(500, "Heavy Showers");
+            weatherNames.put(600, "Rain");
+            weatherNames.put(700, "Snow");
+            weatherNames.put(800, "Thunder");
+            return weatherNames.get(weatherName);
         }
         return "No data entered";
     }
