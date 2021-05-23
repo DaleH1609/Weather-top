@@ -24,7 +24,7 @@ public class Station extends Model {
         this.longitude = longitude;
     }
 
-    public String getName(){
+    public String getName(){ // Used to sort stations in alphabetically
         return name;
     }
 
@@ -121,8 +121,8 @@ public class Station extends Model {
     }
 
     public String windTrend() {
-        if (readings.size() >= 3) {
-            double Trend1 = (readings.get(readings.size() - 1).windSpeed);
+        if (readings.size() >= 3) { // Making sure there is 3 readings in the ArrayList before it allows the variables to be assigned values.
+            double Trend1 = (readings.get(readings.size() - 1).windSpeed); //
             double Trend2 = (readings.get(readings.size() - 2).windSpeed);
             double Trend3 = (readings.get(readings.size() - 3).windSpeed);
 
@@ -231,7 +231,7 @@ public class Station extends Model {
     }
 
     public double getMaxWindSpeed() {
-        Reading maxWindSpeed = new Reading(null, 0, 0.0, 0.0, 0, 0.0);
+        Reading maxWindSpeed = new Reading(null, 0, 0.0, 0.0, 0, 0.0); //Creating an object of type reading but assigning all the values a number to prevent NullPointerException
         if (readings.size() > 0) {
             maxWindSpeed = readings.get(0);
             for (Reading reading : readings) {

@@ -38,7 +38,7 @@ public class Accounts extends Controller
             member.setPassword(password);
             member.save();
             Logger.info("New details saved");
-            render("/dashboard.html");
+            redirect ("/dashboard");
         }
     }
 
