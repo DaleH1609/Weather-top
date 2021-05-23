@@ -17,8 +17,6 @@ public class StationCtrl extends Controller {
         render("station.html", station);
     }
 
-   // public static void celsiusToFarenheit(double temp)
-
     public static void deleteReading(Long id, Long readingid)
     {
         Station station = Station.findById(id);

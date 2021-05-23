@@ -18,6 +18,7 @@ public class Dashboard extends Controller
     Logger.info("Rendering Dasboard");
     Member member = Accounts.getLoggedInMember();
     List<Station> stations = member.stations;
+    Collections.sort(stations, Comparator.comparing(Station::getName));
     render ("dashboard.html", stations);
   }
 

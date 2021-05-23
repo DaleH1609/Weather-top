@@ -24,6 +24,10 @@ public class Station extends Model {
         this.longitude = longitude;
     }
 
+    public String getName(){
+        return name;
+    }
+
     public double celsiusToFarenheit() {
         if (!readings.isEmpty()) {
             return (readings.get(readings.size() - 1).temperature * (1.8) + 32);

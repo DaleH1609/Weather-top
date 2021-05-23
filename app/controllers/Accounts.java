@@ -24,6 +24,24 @@ public class Accounts extends Controller
         redirect("/");
     }
 
+    public static void index() {
+        Logger.info("Rendering members");
+        render ("members.html");
+    }
+
+    public static void editmember(String firstname, String lastname, String email, String password){
+        Member member = Accounts.getLoggedInMember();
+        if(member != null) {
+            member.setFirstname(firstname);
+            member.setLastname(lastname);
+            member.setEmail(email);
+            member.setPassword(password);
+            member.save();
+            Logger.info("New details saved");
+            render("/dashboard.html");
+        }
+    }
+
     public static void authenticate(String email, String password)
     {
         Logger.info("Attempting to authenticate with " + email + ":" + password);

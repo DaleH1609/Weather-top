@@ -9,6 +9,8 @@ GET    /signup                                  Accounts.signup
 GET    /login                                   Accounts.login
 POST   /register                                Accounts.register
 POST   /authenticate                            Accounts.authenticate
+POST   /editmember                              Accounts.editmember
+GET    /members                                 Accounts.index
 GET    /logout                                  Accounts.logout
 GET     /admin                                  Admin.index
 
